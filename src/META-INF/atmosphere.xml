@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="windows-1252"?>
+
+<atmosphere-handlers>
+    <atmosphere-handler context-root="/atmosphere"
+                        class-name="org.example.MyAtmosphereHandler"
+                        comet-support="org.example.ChannelAPIAsyncSupport">
+    </atmosphere-handler>
+</atmosphere-handlers>
