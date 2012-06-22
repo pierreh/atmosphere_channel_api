@@ -8,11 +8,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-        <title>JSP Page</title>
+        <title>Atmosphere Integration With Channel API</title>
         <script type="text/javascript" src="/_ah/channel/jsapi"></script>
     </head>
     <body>
-        <h1>[JSP] Hello World!</h1>
         
         <a href="#" onclick="sendMessage('hello')">send</a>
         

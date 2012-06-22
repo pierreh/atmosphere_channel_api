@@ -14,7 +14,9 @@ public class ChannelAPIServlet extends AtmosphereServlet {
     public void init(ServletConfig sc) throws ServletException {
         framework().setAsyncSupport(new ChannelApiAsyncSupport(framework().getAtmosphereConfig()));
         super.init(sc);
-        framework().addAtmosphereHandler("/atmosphere", new MyAtmosphereHandler());
+        
+        framework().addAtmosphereHandler("/atmosphere"
+                , new MyAtmosphereHandler());
     }
     
 }

@@ -89,6 +89,11 @@
         <include name="**/*.jar" />
       </fileset>
     </copy>
+    <copy todir="${war.dir}/WEB-INF/classes">
+        <fileset dir="src">
+          <include name="**/*.properties" />
+        </fileset>
+    </copy>
   </target>
 
   <target name="clean"

@@ -31,7 +31,7 @@
                     <target>clean</target>
                 </action>
                 <action name="run">
-                    <target>debug</target>
+                    <target>runserver</target>
                 </action>
                 <action name="redeploy">
                     <target>war</target>
@@ -39,6 +39,9 @@
                 <action name="rebuild">
                     <target>clean</target>
                     <target>compile</target>
+                </action>
+                <action name="test">
+                    <target>debug</target>
                 </action>
             </ide-actions>
             <view>
@@ -65,6 +68,7 @@
                     <ide-action name="clean"/>
                     <ide-action name="run"/>
                     <ide-action name="redeploy"/>
+                    <ide-action name="test"/>
                 </context-menu>
             </view>
             <subprojects/>

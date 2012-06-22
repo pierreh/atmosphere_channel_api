@@ -8,7 +8,12 @@
        See https://developers.google.com/appengine/docs/java/config/appconfig#Using_Concurrent_Requests -->
   <threadsafe>true</threadsafe>
 
+  <system-properties>
+    <property name="java.util.logging.config.file" value="WEB-INF/classes/logging.properties"/>
+  </system-properties>
+ 
   <inbound-services>
     <service>channel_presence</service>
   </inbound-services>
+  
 </appengine-web-app>

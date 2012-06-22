@@ -37,8 +37,7 @@ public class ChannelAPIPresenceServlet extends HttpServlet {
             if (presence.isConnected()) {
                 if (resource != null) {
                     connected(resource, presence);
-                    ChannelApiAsyncSupport.sendToClient(presence.clientId(), 
-                        "connected:id=" + presence.clientId() + ";");
+                    ChannelApiAsyncSupport.sendConnected(presence.clientId());
                 } else {
                     throw new IllegalStateException("Failed to find atmosphere resource for: " + presence.clientId());
                 }
@@ -56,14 +55,14 @@ public class ChannelAPIPresenceServlet extends HttpServlet {
         // TODO we need to sort out which http request/response to use for the atmosphereresource
          
         final String uuid = presence.clientId();
-        resource.getResponse().setResponse(new HttpServletResponseWrapper(resource.getResponse()) {
+        resource.getResponse().setResponse(new HttpServletResponseWrapper(
+                (HttpServletResponse) resource.getResponse().getResponse()) {
             ServletOutputStream out = new ServletOutputStream() {
                 private StringBuilder buffer = new StringBuilder();
                 @Override
                 public void flush() throws IOException {
                     if (buffer.length() > 0) {
-                        ChannelApiAsyncSupport.sendToClient(uuid, "message:l=" + buffer.length()
-                                + ";" + buffer.toString());
+                        ChannelApiAsyncSupport.sendMessage(uuid, buffer.toString());
                         buffer.setLength(0);
                     }
                 }

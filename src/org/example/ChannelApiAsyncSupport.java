@@ -67,7 +67,13 @@ public class ChannelApiAsyncSupport extends AsynchronousProcessor {
         return res.getResponse().getResponse() != null;
     }
     
-    static void sendToClient(String uuid, String message) {
+    static void sendConnected(String uuid) {
+        sendToClient(uuid, "connected:id=" + uuid + ";");
+    }
+    static void sendMessage(String uuid, String message) {
+        sendToClient(uuid, "message:l=" + message.length() + ";" + message);
+    }
+    private static void sendToClient(String uuid, String message) {
         ChannelService channelService = ChannelServiceFactory.getChannelService();
         channelService.sendMessage(
                 new ChannelMessage(uuid, message));
