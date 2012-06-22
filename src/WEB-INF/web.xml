@@ -8,11 +8,11 @@
     <servlet>
         <description>AtmosphereServlet</description>
         <servlet-name>AtmosphereServlet</servlet-name>
-        <servlet-class>org.example.ChannelAPIServlet</servlet-class>
-        <init-param>
+        <servlet-class>org.atmosphere.cpr.AtmosphereServlet</servlet-class>
+<!--        <init-param>
             <param-name>org.atmosphere.cpr.broadcasterClass</param-name>
             <param-value>org.example.ChannelAPIBroadcaster</param-value>
-        </init-param>        
+        </init-param>        -->
         <!--<init-param>
             <param-name>org.atmosphere.disableOnStateEvent</param-name>
             <param-value>true</param-value>
@@ -37,22 +37,24 @@
         <!--Uncomment if you want to use Servlet 3.0 Async Support-->
 <!--        <async-supported>true</async-supported>-->
     </servlet>
-    <servlet>
+<!--    <servlet>
         <servlet-name>ChannelAPIPresenceServlet</servlet-name>
         <servlet-class>org.example.ChannelAPIPresenceServlet</servlet-class>
-    </servlet>
+    </servlet>-->
     <servlet-mapping>
         <servlet-name>hello</servlet-name>
         <url-pattern>/helloappengine</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
+<!--    <servlet-mapping>
         <servlet-name>ChannelAPIPresenceServlet</servlet-name>
         <url-pattern>/_ah/channel/disconnected/*</url-pattern>
         <url-pattern>/_ah/channel/connected/*</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>-->
     <servlet-mapping>
         <servlet-name>AtmosphereServlet</servlet-name>
-        <url-pattern>/atmosphere</url-pattern>
+        <url-pattern>/MyAtmosphereHandler</url-pattern>
+        <url-pattern>/_ah/channel/disconnected/*</url-pattern>
+        <url-pattern>/_ah/channel/connected/*</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>helloappengine</welcome-file>

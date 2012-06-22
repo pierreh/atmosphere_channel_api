@@ -39,7 +39,7 @@
         }
         function requestToken() {
           var xhr = new XMLHttpRequest();
-          xhr.open('GET', 'atmosphere', true); 
+          xhr.open('GET', 'MyAtmosphereHandler', true); 
           xhr.onreadystatechange = function() {
               if (xhr.readyState == 4 && xhr.status==200) {
                   var token = xhr.getResponseHeader("chapi_token");

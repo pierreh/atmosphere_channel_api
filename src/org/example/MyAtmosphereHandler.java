@@ -1,8 +1,6 @@
 package org.example;
 
 import java.io.IOException;
-import org.atmosphere.config.service.AtmosphereHandlerService;
-import org.atmosphere.cpr.AtmosphereHandler;
 import org.atmosphere.cpr.AtmosphereResource;
 import org.atmosphere.cpr.AtmosphereResourceEvent;
 import org.atmosphere.handler.AbstractReflectorAtmosphereHandler;
@@ -13,7 +11,6 @@ import org.slf4j.LoggerFactory;
  *
  * @author p.havelaar
  */
-@AtmosphereHandlerService(path="/atmosphere")
 public class MyAtmosphereHandler extends AbstractReflectorAtmosphereHandler {
     
     private final Logger logger = LoggerFactory.getLogger("MyAtmosphereHandler");
