@@ -1,0 +1,2 @@
+Currently makes use of the integrated Channel API of Atmosphere runtime from
+https://github.com/pierreh/atmosphere/tree/channel_api
