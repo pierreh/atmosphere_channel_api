@@ -2,7 +2,7 @@
   <!-- Replace this with your application id from http://appengine.google.com -->
   <application>atmospheregae</application>
 
-  <version>1</version>
+  <version>5</version>
 
   <!-- Change to false if your code is not threadsafe.
        See https://developers.google.com/appengine/docs/java/config/appconfig#Using_Concurrent_Requests -->
@@ -15,5 +15,7 @@
   <inbound-services>
     <service>channel_presence</service>
   </inbound-services>
+  
+<!--  <sessions-enabled>true</sessions-enabled>-->
   
 </appengine-web-app>

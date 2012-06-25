@@ -39,16 +39,18 @@
         }
         function requestToken() {
           var xhr = new XMLHttpRequest();
-          xhr.open('GET', 'MyAtmosphereHandler', true); 
+          xhr.open('GET', 'atmosphere', true); 
           xhr.onreadystatechange = function() {
               if (xhr.readyState == 4 && xhr.status==200) {
-                  var token = xhr.getResponseHeader("chapi_token");
-                  if (token) {
-                      console.log('received token: ' + token);
-                      connectChannel(token);
+                  var response = eval('('+xhr.responseText+')');
+                  if (response.token) {
+                      console.log('received token: ' + response.token);
+                      connectChannel(response.token);
                   } else {
-                      console.log('no token received');
+                      alert('failed to get token');
                   }
+              } else if (xhr.readyState == 4){
+                  alert('error code ' + xhr.status);
               }
           }
           xhr.send(); 

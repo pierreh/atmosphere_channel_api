@@ -9,6 +9,7 @@
        property file feature, allowing each developer to have their own
        local property file with the path to the SDK from that workspace. -->
   <property name="appengine.sdk" location="${env.APPENGINE_HOME}"/>
+  <property name="atmosphere.source" location="${env.ATMOSPHERE_SOURCE}"/>
 
   <!-- Check that the SDK value is set and seems sane, so we can give a nicer
        error if not.  -->
@@ -44,6 +45,7 @@
   <target name="war" depends="enhance" 
           description="Assemble the application directory">
     <mkdir dir="${war.dir}/WEB-INF"/>
+    <mkdir dir="${war.dir}/META-INF"/>
     <copy todir="${war.dir}">
       <fileset dir="html">
         <exclude name="**/.svn/**"/>
@@ -53,6 +55,10 @@
     <copy todir="${war.dir}/WEB-INF">
       <fileset dir="src/WEB-INF">
         <include name="*.xml"/>
+      </fileset>
+    </copy>
+    <copy todir="${war.dir}/META-INF">
+      <fileset dir="src/META-INF">
       </fileset>
     </copy>
     <enhance_war war="${war.dir}"/>
@@ -67,6 +73,11 @@
           description="Compile the application servlet code">
     <mkdir dir="${war.dir}/WEB-INF/classes"/>
     <mkdir dir="${war.dir}/WEB-INF/lib"/>
+    <copy todir="src/WEB-INF/lib" flatten="true">
+      <fileset dir="${atmosphere.source}/modules/cpr/target">
+        <include name="**/*.jar" />
+      </fileset>
+    </copy>
     <javac srcdir="src" destdir="${war.dir}/WEB-INF/classes" debug="true">
       <classpath>
         <fileset dir="${appengine.sdk}/lib/user">
